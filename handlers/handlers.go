@@ -1,4 +1,4 @@
-package handlers
+package handler
 
 import (
 	"net/http"
@@ -7,8 +7,15 @@ import (
 )
 
 // Home is a handler for the home page
+
+func NotFound404(c *gin.Context){
+	c.HTML(http.StatusNotFound, "404.html", gin.H{
+		"title": "Page Not Found",
+	})
+}
+
 func Home(c *gin.Context) {
-	c.HTML(http.StatusOK, "index.html", gin.H{
+	c.HTML(http.StatusOK, "welcome.html", gin.H{
 		"Title":   "Welcome to Gin",
 		"Message": "This is the home page. RAJVEERRRR",
 	})
@@ -19,4 +26,12 @@ func About(c *gin.Context) {
 		"Title": "Welcome to Gin ABOUT PAGE RAJVEER",
 		"Para":  "this is a paragrtaph from the about page :)))))",
 	})
+}
+
+func Login(c *gin.Context){
+	c.HTML(http.StatusOK, "loginForm.html", gin.H{})
+}
+
+func SignUp(c *gin.Context){
+	c.HTML(http.StatusOK, "signupForm.html", gin.H{})
 }
